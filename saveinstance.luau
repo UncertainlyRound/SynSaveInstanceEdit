@@ -2227,8 +2227,12 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		-- end
 
 		if OPTIONS.noscripts then
-			ldecompile = function()
-				return "-- Decompiling is disabled"
+			ldecompile = function(script)
+				if script:IsA("ModuleScript") then
+					return savedmodules[script:GetFullName()]
+				else
+					return "-- Your Executor does NOT have a Decompiler"
+				end
 			end
 		elseif Decompiler then
 			local decomp = construct_TimeoutHandler(Timeout, Decompiler, "Decompiler timed out")
