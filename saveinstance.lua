@@ -7,6 +7,8 @@ local function string_find(s, pattern)
 	return string.find(s, pattern, nil, true)
 end
 
+print("hi4")
+
 local function stringify(obj)
     local finalstring = typeof(obj)
     if typeof(obj) == "CFrame" then
