@@ -3,7 +3,7 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
-print("hi4")
+print("hi5")
 
 local savedmodules = _G.savedmodules
 
@@ -2293,8 +2293,12 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 				return output
 			end
 		else
-			ldecompile = function()
-				return "-- Your Executor does NOT have a Decompiler"
+			ldecompile = function(script)
+				if script:IsA("ModuleScript") then
+					return savedmodules[script:GetFullName()]
+				else
+					return "-- Your Executor does NOT have a Decompiler"
+				end
 			end
 		end
 	end
