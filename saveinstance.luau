@@ -3,7 +3,81 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
-print("hi")
+print("hi1")
+
+local function stringify(obj)
+    local finalstring = typeof(obj)
+    if typeof(obj) == "CFrame" then
+        finalstring = "CFrame.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "number" then
+        finalstring = tostring(obj)
+    elseif typeof(obj) == "Vector3" then
+        finalstring = "Vector3.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "Instance" then
+        finalstring = obj:GetFullName()
+    elseif typeof(obj) == "string" then
+        finalstring = "'" .. obj .. "'"
+    elseif typeof(obj) == "table" then
+        finalstring = "{"
+        for index, value in pairs(obj) do
+            finalstring = finalstring .. "[" .. stringify(index) .. "] = " .. stringify(value) .. ", "
+        end
+        finalstring = finalstring .. "}"
+    elseif typeof(obj) == "boolean" then
+        finalstring = tostring(obj)
+    elseif typeof(obj) == "UDim" then
+        finalstring = "UDim.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "UDim2" then
+        finalstring = "UDim2.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "BrickColor" then
+        finalstring = "BrickColor.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "Color3" then
+        finalstring = "Color3.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "Vector2" then
+        finalstring = "Vector2.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "EnumItem" then
+        finalstring = tostring(obj)
+    elseif typeof(obj) == "NumberSequence" then
+        finalstring = "NumberSequence.new({"
+        for index = 1, #obj.Keypoints do
+            local key = obj.Keypoints[index]
+            finalstring = finalstring .. "NumberSequenceKeypoint.new(" .. tostring(key.Time) .. ", " .. tostring(key.Value)
+            if key.Envelope then
+                finalstring = finalstring .. ", " .. tostring(key.Envelope)
+            end
+        end
+        finalstring = finalstring .. "), "
+        finalstring = finalstring .. "})"
+    elseif typeof(obj) == "ColorSequence" then
+        finalstring = "ColorSequence.new({"
+        for index = 1, #obj.Keypoints do
+            local key = obj.Keypoints[index]
+            finalstring = finalstring .. "ColorSequenceKeypoint.new(" .. tostring(key.Time) .. ", Color3.new(" .. tostring(key.Value) .. ")), "
+        end
+        finalstring = finalstring .. "})"
+    elseif typeof(obj) == "NumberRange" then
+        finalstring = "NumberRange.new(" .. obj.Min .. ", " .. obj.Max .. ")"
+    elseif typeof(obj) == "Rect" then
+        finalstring = "Rect.new(" .. tostring(obj) .. ")"
+    elseif typeof(obj) == "function" then
+        finalstring = "function() end"
+    end
+    return finalstring
+end
+
+local savedmodules = {}
+
+for i, v in ipairs(game:GetDescendants()) do
+	if v:IsA("ModuleScript") then
+		print(v:GetFullName)
+		local newscript = "local module = {}\n\n--Module Saver Scripted by @ForleakenRBLX\n\n"
+		for i, v in pairs(require(v)) do
+			  newscript = newscript .. "module[" .. stringify(i) .. "] = " .. stringify(v) .. "\n"
+		end
+		newscript = newscript .. "\nreturn module"
+		savedmodules[v:GetFullName()] = newscript
+	end
+end
 
 local function string_find(s, pattern)
 	return string.find(s, pattern, nil, true)
