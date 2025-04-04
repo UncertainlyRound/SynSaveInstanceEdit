@@ -3,7 +3,9 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
-print("hi3")
+print("hi4")
+
+local savedmodules = _G.savedmodules
 
 local function string_find(s, pattern)
 	return string.find(s, pattern, nil, true)
