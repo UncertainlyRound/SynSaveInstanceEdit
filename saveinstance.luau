@@ -3,7 +3,7 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
-print("hi2")
+print("hi1")
 
 local function stringify(obj)
     local finalstring = typeof(obj)
