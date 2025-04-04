@@ -3,6 +3,8 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
+print("hi")
+
 local function string_find(s, pattern)
 	return string.find(s, pattern, nil, true)
 end
