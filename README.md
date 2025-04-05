@@ -16,11 +16,11 @@ The original script, shortly USSI, is a project aimed at resurrecting saveinstan
 Reason: Many Executors fail miserably at providing good user experience when it comes to tinkering with saving instances.
 This edit provides the ability to save ModuleScripts without needing a decompile function, instead using require() to obtain information. Please note that functions cannot be saved using this method.
 
-> [OG USSI CREDITS]\n
-> Abiding under the Section 7 (b) in the LICENSE:
-> - Credit string: `UniversalSynSaveInstance https://discord.gg/wx4ThpAsmw`
-> - Original Repository: https://github.com/luau/UniversalSynSaveInstance
-> - [License](https://github.com/luau/UniversalSynSaveInstance/blob/main/LICENSE)
+[OG USSI CREDITS]
+Abiding under the Section 7 (b) in the LICENSE:
+- Credit string: `UniversalSynSaveInstance https://discord.gg/wx4ThpAsmw`
+- Original Repository: https://github.com/luau/UniversalSynSaveInstance
+- [License](https://github.com/luau/UniversalSynSaveInstance/blob/main/LICENSE)
 
 > [!TIP]
 > Important part about this saveinstance is that it doesn't modify anything, therefore reduces the amount of detection vectors by a lot.<br />
