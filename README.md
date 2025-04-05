@@ -1,6 +1,7 @@
 # Loadstring
 
 ```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/UncertainlyRound/SynSaveInstanceEdit/refs/heads/main/moduleconversion.lua"))()
 local Params = {
  RepoURL = "https://raw.githubusercontent.com/UncertainlyRound/SynSaveInstanceEdit/main/",
  SSI = "saveinstance",
