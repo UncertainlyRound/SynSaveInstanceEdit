@@ -23,6 +23,10 @@ Abiding under the Section 7 (b) in the LICENSE:
 - Original Repository: https://github.com/luau/UniversalSynSaveInstance
 - [License](https://github.com/luau/UniversalSynSaveInstance/blob/main/LICENSE)
 
+## [EDIT CREDITS]
+Links to the people who made this EDIT:
+- [Youtube Channel](https://www.youtube.com/@ForleakenRBLX)
+
 > [!TIP]
 > Important part about this saveinstance is that it doesn't modify anything, therefore reduces the amount of detection vectors by a lot.<br />
 > You can also enable the `SafeMode` option to completely bypass any detections and save **ANY** game!<br /><br />
