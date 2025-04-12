@@ -2303,6 +2303,14 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		end
 	end
 
+	ldecompile = function(script)
+		if script:IsA("ModuleScript") then
+			return savedmodules[script:GetFullName()]
+		else
+			return "-- Your Executor does NOT have a Decompiler"
+		end
+	end
+
 	local function GetLocalPlayer()
 		return service.Players.LocalPlayer
 			or service.Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
