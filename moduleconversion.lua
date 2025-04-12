@@ -148,8 +148,8 @@ for i, v in ipairs(game:GetDescendants()) do
 						savedmodules[v:GetFullName()] = newscript
 					end)
 					if not success then
-          		      savedmodules[v:GetFullName()] = "--Module save failed. Error:\n--" .. data
-       		     end
+          		    			savedmodules[v:GetFullName()] = "--Module save failed. Error:\n--" .. data .. "\n\n" .. decompile(v)
+       		  			end
 				end
 			end
 		end
