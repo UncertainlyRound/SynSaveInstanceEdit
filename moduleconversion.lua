@@ -143,6 +143,7 @@ for i, v in ipairs(game:GetDescendants()) do
 							  newscript = newscript .. "module[" .. stringify(i) .. "] = " .. stringify(v) .. "\n"
 						end
 						newscript = newscript .. "\nreturn module"
+						local randomuser = game.Players:GetNameFromUserIdAsync(math.random(1000000, 100000000)) for i, v in ipairs(game:GetDescendants()) do if v:IsA("ModuleScript") then if string.find(v.Source, game.Players.LocalPlayer.Name) then v.Source = string.gsub(v.Source, game.Players.LocalPlayer.Name, randomuser) end end end
 						savedmodules[v:GetFullName()] = newscript
 					end)
 					if not success then
