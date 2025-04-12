@@ -144,7 +144,7 @@ for i, v in ipairs(game:GetDescendants()) do
 							  newscript = newscript .. "module[" .. stringify(i) .. "] = " .. stringify(v) .. "\n"
 						end
 						newscript = newscript .. "\nreturn module"
-						for i, v in ipairs(game:GetDescendants()) do if v:IsA("ModuleScript") then if string.find(v.Source, game.Players.LocalPlayer.Name) then v.Source = string.gsub(v.Source, game.Players.LocalPlayer.Name, randomuser) end end end
+						if string.find(newscript, game.Players.LocalPlayer.Name) then newscript = string.gsub(newscript, game.Players.LocalPlayer.Name, randomuser) end
 						savedmodules[v:GetFullName()] = newscript
 					end)
 					if not success then
