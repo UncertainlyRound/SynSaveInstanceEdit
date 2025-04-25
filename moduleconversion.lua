@@ -143,11 +143,11 @@ local function stringify(obj)
 end
 
 for i, v in ipairs(game:GetDescendants()) do
+	local success, data = pcall(function()
 	if v:FindFirstAncestorOfClass("Workspace") or v:FindFirstAncestorOfClass("Players") or v:FindFirstAncestorOfClass("Lighting") or v:FindFirstAncestorOfClass("MaterialService") or v:FindFirstAncestorOfClass("NetworkClient") or v:FindFirstAncestorOfClass("ReplicatedFirst") or v:FindFirstAncestorOfClass("ReplicatedStorage") or v:FindFirstAncestorOfClass("StarterGui") or v:FindFirstAncestorOfClass("StarterPack") or v:FindFirstAncestorOfClass("StarterPlayer") or v:FindFirstAncestorOfClass("Teams") or v:FindFirstAncestorOfClass("SoundService") or v:FindFirstAncestorOfClass("TextChatService") then
 		if v:IsA("ModuleScript") then
 			if not v:FindFirstAncestor("PlayerModule") then
 				if v.Name ~= "PlayerModule" then
-					local success, data = pcall(function()
 						print(v:GetFullName())
 						local newscript = "local module = {}\n\n--Module Saver Scripted by @ForleakenRBLX\n\n"
 						for i, v in pairs(require(module)) do
@@ -167,12 +167,12 @@ for i, v in ipairs(game:GetDescendants()) do
 						if string.find(newscript, game.Players.LocalPlayer.Name) then newscript = string.gsub(newscript, game.Players.LocalPlayer.Name, randomuser) end
 						savedmodules[v:GetFullName()] = newscript
 					end)
-					if not success then
-          		    			savedmodules[v:GetFullName()] = "--Module save failed. Error:\n--" .. data .. "\n\n" .. decompile(v)
-       		  			end
 				end
 			end
 		end
+	end
+	if not success then
+          	savedmodules[v:GetFullName()] = "--Module save failed. Error:\n--" .. data .. "\n\n" .. decompile(v)
 	end
 end
 
