@@ -143,8 +143,8 @@ local function stringify(obj)
 end
 
 for i, v in ipairs(game:GetDescendants()) do
-	if v:IsA("ModuleScript") then
-		if v:FindFirstAncestorOfClass("Workspace") or v:FindFirstAncestorOfClass("Players") or v:FindFirstAncestorOfClass("Lighting") or v:FindFirstAncestorOfClass("MaterialService") or v:FindFirstAncestorOfClass("NetworkClient") or v:FindFirstAncestorOfClass("ReplicatedFirst") or v:FindFirstAncestorOfClass("ReplicatedStorage") or v:FindFirstAncestorOfClass("StarterGui") or v:FindFirstAncestorOfClass("StarterPack") or v:FindFirstAncestorOfClass("StarterPlayer") or v:FindFirstAncestorOfClass("Teams") or v:FindFirstAncestorOfClass("SoundService") or v:FindFirstAncestorOfClass("TextChatService") then
+	if v:FindFirstAncestorOfClass("Workspace") or v:FindFirstAncestorOfClass("Players") or v:FindFirstAncestorOfClass("Lighting") or v:FindFirstAncestorOfClass("MaterialService") or v:FindFirstAncestorOfClass("NetworkClient") or v:FindFirstAncestorOfClass("ReplicatedFirst") or v:FindFirstAncestorOfClass("ReplicatedStorage") or v:FindFirstAncestorOfClass("StarterGui") or v:FindFirstAncestorOfClass("StarterPack") or v:FindFirstAncestorOfClass("StarterPlayer") or v:FindFirstAncestorOfClass("Teams") or v:FindFirstAncestorOfClass("SoundService") or v:FindFirstAncestorOfClass("TextChatService") then
+		if v:IsA("ModuleScript") then
 			if not v:FindFirstAncestor("PlayerModule") then
 				if v.Name ~= "PlayerModule" then
 					local success, data = pcall(function()
