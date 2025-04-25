@@ -166,11 +166,11 @@ for i, v in ipairs(game:GetDescendants()) do
 						newscript = newscript .. "\nreturn module"
 						if string.find(newscript, game.Players.LocalPlayer.Name) then newscript = string.gsub(newscript, game.Players.LocalPlayer.Name, randomuser) end
 						savedmodules[v:GetFullName()] = newscript
-					end)
+					end
 				end
 			end
 		end
-	end
+	end)
 	if not success then
           	savedmodules[v:GetFullName()] = "--Module save failed. Error:\n--" .. data .. "\n\n" .. decompile(v)
 	end
