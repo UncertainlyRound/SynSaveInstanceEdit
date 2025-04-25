@@ -87,7 +87,17 @@ local function stringify(obj)
     elseif typeof(obj) == "table" then
         finalstring = "{"
         for index, value in pairs(obj) do
-            finalstring = finalstring .. "[" .. stringify(index) .. "] = " .. stringify(value) .. ", "
+            if typeof(index) == "number" then
+    			finalstring = finalstring .. "[" .. tostring(index) .. "] = " .. stringify(value) .. ", "
+		    elseif typeof(index) == "string" then
+		    	if checkstring(index) then
+		    		finalstring = finalstring .. index .. " = " .. stringify(value) .. ", "
+		    	else
+    				finalstring = finalstring .. "[" .. stringify(index) .. "] = " .. stringify(value) .. ", "
+  		  	end
+  		  else
+  		  	finalstring = finalstring .. "[" .. stringify(index) .. "] = " .. stringify(value) .. ", "
+ 		   end
         end
         finalstring = finalstring .. "}"
     elseif typeof(obj) == "boolean" then
@@ -140,8 +150,18 @@ for i, v in ipairs(game:GetDescendants()) do
 					local success, data = pcall(function()
 						print(v:GetFullName())
 						local newscript = "local module = {}\n\n--Module Saver Scripted by @ForleakenRBLX\n\n"
-						for i, v in pairs(require(v)) do
-							  newscript = newscript .. "module[" .. stringify(i) .. "] = " .. stringify(v) .. "\n"
+						for i, v in pairs(require(module)) do
+							if typeof(i) == "number" then
+ 							   	newscript = newscript .. "module[" .. tostring(i) .. "] = " .. stringify(v) .. "\n"
+							    elseif typeof(i) == "string" then
+  							  	if checkstring(i) then
+    									newscript = newscript .. "module." .. i .. " = " .. stringify(v) .. "\n"
+ 							   	else
+  							  		newscript = newscript .. "module[" .. stringify(i) .. "] = " .. stringify(v) .. "\n"
+							    	end
+ 							   else
+   							 	newscript = newscript .. "module[" .. stringify(i) .. "] = " .. stringify(v) .. "\n"
+							end
 						end
 						newscript = newscript .. "\nreturn module"
 						if string.find(newscript, game.Players.LocalPlayer.Name) then newscript = string.gsub(newscript, game.Players.LocalPlayer.Name, randomuser) end
