@@ -2308,7 +2308,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 			if savedmodules[script:GetFullName()] then
 				return savedmodules[script:GetFullName()]
 			else
-				return "unknown error"
+				return "--unknown error\n\n" .. decompile(script)
 			end
 		else
 			return "-- Your Executor does NOT have a Decompiler"
