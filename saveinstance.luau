@@ -3,7 +3,7 @@
 --!divine-intellect
 -- https://discord.gg/wx4ThpAsmw
 
-print("hi6")
+print("hi7")
 
 local savedmodules = _G.savedmodules
 
